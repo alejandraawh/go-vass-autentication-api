@@ -158,7 +158,7 @@ const getUserData = async (req, res) => {
 	var user=results[0];
 	var roles=results[2];
 	var id=results[3];
-	var dataUser="{ correo :"+username+", nombre:"+user+", roles:"+roles+", idUser:"+id+"}";
+	var dataUser={ correo :username, nombre:user, roles:roles, idUser:id};
 
 	res.send({msg:'success' , data: dataUser})
 	res.end()
