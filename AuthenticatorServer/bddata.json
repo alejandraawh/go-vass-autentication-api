@@ -1,0 +1,26 @@
+[
+{
+"correo":"josea23@vaticanfiles.com",
+"nombre":"Jose de Arimatea",
+"clave":"vass123latam",
+"roles":"admin,usuario"
+},
+{
+"correo":"rrmans@relaxing.com",
+"nombre":"Remanso Relax",
+"clave":"vass123latam",
+"roles":"admin,usuario"
+},
+{
+"correo":"pppp@gmail.com",
+"nombre":"Pedro Pablo Leon Jaramillo",
+"clave":"vass321latam",
+"roles":"usuario"
+},
+{
+"correo":"bowieaz@uscorps.com",
+"nombre":"Jhon James Rambo",
+"clave":"vass321latam",
+"roles":"usuario"
+}
+]
