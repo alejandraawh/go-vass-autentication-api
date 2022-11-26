@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken")
 
 const jwtKey = "my_secret_key"
-const jwtExpirySeconds = 300
+const jwtExpirySeconds = 3000
 const { MongoClient } = require("mongodb");
 const uri = "mongodb+srv://vass:vass@cluster0.mqhdi1v.mongodb.net/test";
 const client = new MongoClient(uri, {
@@ -78,10 +78,10 @@ const signIn = async (req, res) => {
 	res.end()
 }
 
-const welcome = (req, res) => {
+const verify = (req, res) => {
 	// We can obtain the session token from the requests cookies, which come with every request
-	const token = req.cookies.token
-
+	const  { token } = req.body
+	console.log("-----"+token)
 	// if the cookie is not set, return an unauthorized error
 	if (!token) {
 		return res.status(401).end()
@@ -105,7 +105,7 @@ const welcome = (req, res) => {
 
 	// Finally, return the welcome message to the user, along with their
 	// username given in the token
-	res.send(`Welcome ${payload.username}!`)
+	res.send({username : `${payload.username}`})
 }
 const refresh = (req, res) => {
 	// (BEGIN) The code uptil this point is the same as the first part of the `welcome` route
@@ -183,7 +183,7 @@ const createUser = async (req, res) => {
 	}else{
 	let results = await insert(username, password,fullName, roles);
 	if(results==500){
-		// return 401 error si usuario o clave no existe, o si la clave no es la correcta
+		// return 500 si hay algun error al guardar
 		return res.status(500).send({msg : 'Error al insertar'}).end()	
 	}else{
 	res.status(200)
@@ -193,7 +193,7 @@ const createUser = async (req, res) => {
 }
 module.exports = {
 	signIn,
-	welcome,
+	verify,
 	refresh,
 	getUserData,
 	createUser
