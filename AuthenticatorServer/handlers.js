@@ -73,7 +73,6 @@ const signIn = async (req, res) => {
 
 	// crea una cookie con el token 
 	res.cookie("token", token, { maxAge: jwtExpirySeconds * 1000 })
-	res.status(200)
 	res.send({msg:'success' , token: token})
 	res.end()
 }
@@ -161,7 +160,6 @@ const getUserData = async (req, res) => {
 	var id=results[3];
 	var dataUser="{ correo :"+username+", nombre:"+user+", roles:"+roles+", idUser:"+id+"}";
 
-	res.status(200)
 	res.send({msg:'success' , data: dataUser})
 	res.end()
 }
@@ -186,7 +184,7 @@ const createUser = async (req, res) => {
 		// return 500 si hay algun error al guardar
 		return res.status(500).send({msg : 'Error al insertar'}).end()	
 	}else{
-	res.status(200)
+
 	res.send({msg:'success' })
 	res.end()
 	}}
